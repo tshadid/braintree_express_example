@@ -53,7 +53,8 @@ router.get('/', function (req, res) {
 
 router.get('/checkouts/new', function (req, res) {
   gateway.clientToken.generate({}, function (err, response) {
-    res.render('checkouts/new', {clientToken: response.clientToken, messages: req.flash('error')});
+    //res.render('checkouts/new', {clientToken: response.clientToken, messages: req.flash('error')});
+    res.render('checkouts/new', {clientToken: response.clientToken, messages: 'test'});
   });
 });
 
