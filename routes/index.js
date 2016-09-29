@@ -52,7 +52,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/checkouts/new', function (req, res) {
-  aCustomerId = 123;
+  var aCustomerId = 123;
   gateway.clientToken.generate({customerId: aCustomerId}, function (err, response) {
     console.log('here1');
     console.log(err);
