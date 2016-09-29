@@ -52,9 +52,13 @@ router.get('/', function (req, res) {
 });
 
 router.get('/checkouts/new', function (req, res) {
-  gateway.clientToken.generate({}, function (err, response) {
-    //res.render('checkouts/new', {clientToken: response.clientToken, messages: req.flash('error')});
-    res.render('checkouts/new', {clientToken: response.clientToken, messages: 'test'});
+  aCustomerId = 123;
+  gateway.clientToken.generate({customerId: aCustomerId}, function (err, response) {
+    console.log('here1');
+    console.log(err);
+    console.log(response);
+    res.render('checkouts/new', {clientToken: response.clientToken, messages: req.flash('error')});
+    //res.render('checkouts/new', {clientToken: response.clientToken, messages: 'test'});
   });
 });
 
