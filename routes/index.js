@@ -57,8 +57,15 @@ router.get('/checkouts/new', function (req, res) {
     console.log('here1');
     console.log(err);
     console.log(response);
-    res.render('checkouts/new', {clientToken: response.clientToken, messages: req.flash('error')});
-    //res.render('checkouts/new', {clientToken: response.clientToken, messages: 'test'});
+    if(response.success)
+      res.render('checkouts/new', {clientToken: response.clientToken, messages: req.flash('error')});
+    else
+      gateway.clientToken.generate({}, function (err, response) {
+      console.log('here2');
+      console.log(err);
+      console.log(response);
+      res.render('checkouts/new', {clientToken: response.clientToken, messages: req.flash('error')});
+     });  
   });
 });
 
